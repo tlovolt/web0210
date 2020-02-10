@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax 요청</title>
+</head>
+<body>
+	<div>고정된 내용</div>
+	<div id="disp">동적으로 변경되는 내용</div>
+	<div>고정된 내용</div>
+	
+	<script>
+		
+		//ajax를 이용해서 data.txt 파일의 내용을 읽어서 disp 영역에 출력
+		var disp = document.getElementById("disp");
+		
+		//ajax 객체 생성
+		var request;
+		if(window.ActiveXObject){
+			request= new ActiveXObject("Microsoft.XMLHTTP");
+		}else{
+			request = new XMLHttpRequest();
+		}
+	
+		//요청 옵션을 생성 - data.txt를 GET 방식으로 요청
+		request.open('GET', 'data.txt');
+		//요청을 전송
+		request.send('');
+		
+		//콜백 메소드를 등록
+		request.onreadystatechange = function(){
+			//응답을 정상적으로 받은 경우
+			if(request.readyState == 4 && request.status >= 200 && request.status < 300){
+				//읽어온 데이터를 disp에 출력
+				disp.innerHTML = request.responseText;
+			}
+		}
+	</script>
+	
+</body>
+</html>
+
+
+
+

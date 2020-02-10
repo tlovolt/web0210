@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규식</title>
+
+<script>
+	var msg = "안녕하세요 1반갑습니다.";
+	//msg에 숫자가 포함되어 있는지 확인
+	
+	//정규식 패턴을 생성
+	var reg = /[0-9]/;
+	
+	//msg에 reg의 패턴이 존재하면
+	if(reg.test(msg)){
+		console.log("숫자가 포함되어 있습니다.");
+	}else{
+		console.log("숫자가 포함되어 있지 않습니다.");
+	}
+	
+	msg = "문재인을 문재인이 안녕하세요 안녕문재인"
+	//정규식을 기준으로 분할해서 배열로 리턴
+	var result = msg.split(/문재인/)
+	
+	for(i in result){
+		document.write(result[i] + "<br/>");
+	}
+	
+	//처음 만나는 문재인은 삭제 아무것도 없는 글자와 치환
+	//gm 이라는 한정자를 사용했기 때문에 문자열의 모든 곳에서 치환
+	result = msg.replace(/문재인/gm, "")
+	document.write(result + "<br/>");
+	
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
